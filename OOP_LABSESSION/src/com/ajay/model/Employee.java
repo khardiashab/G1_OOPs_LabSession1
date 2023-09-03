@@ -1,8 +1,9 @@
 package com.ajay.model;
 
 public class Employee {
-  final private String company = "techHub";
-  final String[] department = { "tech", "admin", "hr", "legal" };
+    private static final String COMPANY = "techHub";
+    private static final String[] DEPARTMENT = { "tech", "admin", "hr", "legal" };
+
   private String firstName;
   private String lastName;
   private String email;
@@ -14,11 +15,17 @@ public class Employee {
   }
 
   public String getCompany() {
-    return company;
+        return COMPANY;
   }
 
+    /**
+     * Returns the department at the given index.
+     * 
+     * @param index the index of the department
+     * @return the department at the given index
+     */
   public String getDepartment(int index) {
-    return department[index];
+        return DEPARTMENT[index];
   }
 
   public String getFirstName() {
@@ -52,6 +59,4 @@ public class Employee {
   public void setPassword(String password) {
     this.password = password;
   }
-
-  // co
 }

@@ -3,39 +3,49 @@ package com.ajay.main;
 import java.util.Scanner;
 
 import com.ajay.model.Employee;
-import com.ajay.services.Credientials;
+import com.ajay.services.Credentials;
 
 public class DriverClass {
-  public static void showDepartment(){
+
+  public static void showDepartment() {
+    String[] departments = { "Technology", "Admin", "Human Resource", "Legal" };
 
     System.out.println("--------------------------------------------------");
     System.out.println("Please Enter the department from the following");
-    System.out.println("1. Technology");
-    System.out.println("2. Admin");
-    System.out.println("3. Human Resource");
-    System.out.println("4. Legal");
+
+    for (int i = 0; i < departments.length; i++) {
+      System.out.println((i + 1) + ". " + departments[i]);
+    }
+
     System.out.println();
   }
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     Employee employee = new Employee("Ajay", "Khardia");
-    Credientials cs = new Credientials();
+    Credentials cs = new Credentials();
     int departmentOption;
+
     showDepartment();
+
     departmentOption = sc.nextInt();
-    if(!(departmentOption > 0 && departmentOption < 5)){
+
+    if (!(departmentOption > 0 && departmentOption < 5)) {
+      // Invalid department option
       System.out.println("Invalid department option.");
       sc.close();
       return;
     }
-    // create and Set email
+
+    // Generate and set email
     cs.generateEmailAddress(employee, departmentOption);
-    // cereate and set password 
+
+    // Generate and set password
     cs.generatePassword(employee);
-    // show the details 
+
+    // Show the credentials
     cs.showCredentials(employee);
+
     sc.close();
-    return;
   }
 }
